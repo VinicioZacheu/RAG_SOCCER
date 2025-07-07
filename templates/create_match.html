@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Match</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Create New Match</h1>
+        </header>
+
+        <section>
+            <form method="post" action="/generate-teams">
+                <p>Select players to include in the match:</p>
+                <ul>
+                    {% for player in players %}
+                        <li>
+                            <label>
+                                <input type="checkbox" name="player_ids" value="{{ player[0] }}">
+                                {{ player[1] }}
+                            </label>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <button type="submit">Generate Balanced Teams</button>
+            </form>
+        </section>
+
+        <footer>
+            <a href="/"><button>Back to Home</button></a>
+        </footer>
+    </main>
+</body>
+</html>

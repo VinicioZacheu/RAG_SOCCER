@@ -1,0 +1,18 @@
+# Core web framework
+flask
+
+# Environment variable loading
+python-dotenv
+
+# AI and LLM tools
+openai
+langchain
+langchain-community
+
+
+# Document loaders for RAG (e.g., markdown, text)
+unstructured
+tiktoken
+
+# Vector store for local RAG
+faiss-cpu

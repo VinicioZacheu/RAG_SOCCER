@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Player</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Add New Player</h1>
+        </header>
+
+        <section>
+            <form method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="speed">Speed:</label>
+                    <input type="number" name="speed" id="speed" min="0" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="stamina">Stamina:</label>
+                    <input type="number" name="stamina" id="stamina" min="0" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="passing">Passing:</label>
+                    <input type="number" name="passing" id="passing" min="0" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="shooting">Shooting:</label>
+                    <input type="number" name="shooting" id="shooting" min="0" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dribbling">Dribbling:</label>
+                    <input type="number" name="dribbling" id="dribbling" min="0" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="defense">Defense:</label>
+                    <input type="number" name="defense" id="defense" min="0" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="physical">Physical:</label>
+                    <input type="number" name="physical" id="physical" min="0" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="goalkeeper">Goalkeeper:</label>
+                    <input type="checkbox" name="goalkeeper" id="goalkeeper" value="1">
+                </div>
+
+                <button type="submit">Add Player</button>
+            </form>
+
+            <a href="/"><button>Back to Home</button></a>
+        </section>
+    </main>
+</body>
+</html>

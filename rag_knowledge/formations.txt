@@ -1,0 +1,27 @@
+# Fot7 (7-a-side) Formations
+
+Common formations in Fot7:
+1. 2-3-1
+2. 2-2-2
+3. 3-2-1
+4. 1-3-2
+
+## 2-3-1 (Defensive Shape)
+- **Setup:** 2 Defenders, 3 Midfielders, 1 Forward
+- **Strengths:** Solid defense, midfield control
+- **Weaknesses:** Can lack width in attack
+
+## 2-2-2 (Balanced)
+- **Setup:** 2 Defenders, 2 Midfielders, 2 Forwards
+- **Strengths:** Good attacking options, midfield support
+- **Weaknesses:** Midfield can be overrun
+
+## 3-2-1 (Attacking Shape)
+- **Setup:** 3 Defenders, 2 Midfielders, 1 Forward
+- **Strengths:** Strong defensive cover
+- **Weaknesses:** Very limited attack
+
+## 1-3-2 (High Press)
+- **Setup:** 1 Defender, 3 Midfielders, 2 Forwards
+- **Strengths:** Aggressive, high pressing
+- **Weaknesses:** Vulnerable on the break
