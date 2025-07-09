@@ -6,22 +6,27 @@
   <link rel="stylesheet" href="/static/style.css">
   <style>
     body { font-family: Arial, sans-serif; margin: 2rem; background: #f0f2f5; color: #333; }
-    main { max-width: 800px; margin: auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    main { max-width: 800px; margin: auto; background: #fff; padding: 2rem; border-radius: 8px; 
+           box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
     header h1 { text-align: center; }
 
     .balance-score { font-size: 1.2rem; font-weight: bold; margin-bottom: 1.5rem; text-align: center; }
-    .teams { display: flex; gap: 1rem; margin-bottom: 2rem; }
+    .teams { display: flex; gap: 1rem; margin-bottom: 1rem; }
     .team { flex: 1; background: #fafafa; border-radius: 6px; padding: 1rem; }
     .team h2 { text-align: center; margin-bottom: 1rem; }
     .team ul { list-style: none; padding: 0; }
-    .team li { padding: 0.5rem 0; border-bottom: 1px solid #e0e0e0; }
+    .team li { display: flex; justify-content: space-between; align-items: center; 
+               padding: 0.5rem 0; border-bottom: 1px solid #e0e0e0; }
 
-    .explanation { background: #eef; padding: 1rem; border-radius: 6px; }
+    .swap-btn { background: none; border: none; font-size: 1rem; cursor: pointer; }
+
+    .explanation { background: #eef; padding: 1rem; border-radius: 6px; margin-top: 1rem; }
     .explanation h3 { margin-bottom: 0.5rem; }
     .explanation ul { list-style: disc inside; padding-left: 1rem; }
 
     footer { text-align: center; margin-top: 2rem; }
-    footer button { margin: 0 0.5rem; padding: 0.6rem 1.2rem; border: none; border-radius: 4px; background: #007bff; color: white; cursor: pointer; }
+    footer button { margin: 0 0.5rem; padding: 0.6rem 1.2rem; border: none; border-radius: 4px; 
+                    background: #007bff; color: white; cursor: pointer; }
     footer button:hover { background: #0056b3; }
   </style>
 </head>
@@ -31,37 +36,53 @@
       <h1>⚖️ Times Equilibrados</h1>
     </header>
 
-    <!-- Mostra a pontuação -->
+    <!-- mostra a pontuação, intacta -->
     {% for line in raw.split('\n') %}
       {% if line.startswith('Pontuação de Equilíbrio:') %}
         <p class="balance-score">{{ line }}</p>
       {% endif %}
     {% endfor %}
 
-    <!-- Só jogadores, nada mais, em cada time -->
-    <div class="teams">
-      <section class="team">
-        <h2>Time A</h2>
-        <ul>
-          {% for p in team_a %}<li>{{ p }}</li>{% endfor %}
-        </ul>
-      </section>
-      <section class="team">
-        <h2>Time B</h2>
-        <ul>
-          {% for p in team_b %}<li>{{ p }}</li>{% endfor %}
-        </ul>
-      </section>
-    </div> <!-- fecha .teams -->
+    <!-- formulário para CONFIRMAR apenas ao final -->
+    <form id="confirm-form" method="post" action="/confirm-match">
+      <div class="teams">
+        <section class="team">
+          <h2>Time A</h2>
+          <ul id="team-a">
+            {% for p in team_a %}
+            <li data-player-id="{{ p }}">
+              <span>{{ p }}</span>
+              <button type="button" class="swap-btn">⇄</button>
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
+        <section class="team">
+          <h2>Time B</h2>
+          <ul id="team-b">
+            {% for p in team_b %}
+            <li data-player-id="{{ p }}">
+              <span>{{ p }}</span>
+              <button type="button" class="swap-btn">⇄</button>
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
+      </div>
 
-    <!-- Explicação em bullets -->
+      <button type="submit">Confirmar Partida</button>
+    </form>
+
+    <!-- explicação intacta, abaixo do form -->
     <section class="explanation">
       <h3>Explicação detalhada</h3>
       {% set parts = raw.split('Explicação:') %}
       {% if parts|length > 1 %}
         {% set lines = parts[1].strip().split('\n') %}
         <ul>
-          {% for l in lines if l.strip() %}<li>{{ l.lstrip('- ').strip() }}</li>{% endfor %}
+          {% for l in lines if l.strip() %}
+          <li>{{ l.lstrip('- ').strip() }}</li>
+          {% endfor %}
         </ul>
       {% else %}
         <p>Não foi possível extrair explicação detalhada.</p>
@@ -73,7 +94,8 @@
       <a href="/create-match"><button>Novo Jogo</button></a>
     </footer>
   </main>
+
+  <!-- inclui seu script de swap -->
+  <script src="{{ url_for('static', filename='js/teams.js') }}"></script>
 </body>
 </html>
-
-

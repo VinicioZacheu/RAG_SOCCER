@@ -1,5 +1,3 @@
-# langchain_modules/llm_runner.py
-
 import os
 from dotenv import load_dotenv
 from langchain_community.chat_models import ChatOpenAI
@@ -19,13 +17,13 @@ llm = ChatOpenAI(
 def generate_balanced_teams(players):
     system = SystemMessage(
         content=(
-            "Você é um treinador especialista em futebol de 7 (Fot7). "
-            "Divida estes jogadores em dois times equilibrados. "
+            "Você é um treinador especialista em futebol de 7 (Fut7). "
+            "Divida estes jogadores em dois times equilibrados (leve em considereção os Atributos de cada jogador) Utilize todos os jogadores. "
             "Retorne **exatamente** neste formato **em português**:\n\n"
-            "Pontuação de Equilíbrio: <número>/100\n\n"
+            "Pontuação de Equilíbrio: Principal atributo Time A <Attributo> <número> / Principal atributo Time B <Atributo> <número>\n\n"
             "Time A:\n- Jogador 1\n- Jogador 2\n\n"
             "Time B:\n- Jogador 3\n- Jogador 4\n\n"
-            "Explicação:\n• Primeiro ponto\n• Segundo ponto"
+            "Explicação:\n• Força do Time A, Fraquezas do Time A\n• Força do Time B, Fraquezas do Time B\n\n"
         )
     )
 
